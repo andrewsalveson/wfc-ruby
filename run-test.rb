@@ -1,0 +1,6 @@
+require_relative './test.rb'
+require_relative './src/cell.test.rb'
+require_relative './src/pattern.test.rb'
+require_relative './src/grid.test.rb'
+require_relative './src/util.test.rb'
+require_relative './src/wave.test.rb'
