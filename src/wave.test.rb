@@ -1,5 +1,5 @@
-require_relative './wave.rb'
-require_relative './util.rb'
+require(File.expand_path('./wave.rb', File.dirname(__FILE__)))
+require(File.expand_path('./util.rb', File.dirname(__FILE__)))
 
 describe("waveNeighborhood", lambda {
   it("always returns 6 values even in empty wave", lambda {

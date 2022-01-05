@@ -1,4 +1,4 @@
-require_relative './cell.rb'
+require(File.expand_path('./cell.rb', File.dirname(__FILE__)))
 
 describe("cell operations", lambda {
   describe("rotateCell", lambda {

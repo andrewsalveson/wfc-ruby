@@ -1,4 +1,4 @@
-require_relative './constants.rb'
+require(File.expand_path('./constants.rb', File.dirname(__FILE__)))
 
 def waveNeighborhood(wave,address)
   cx,cy,cz = address

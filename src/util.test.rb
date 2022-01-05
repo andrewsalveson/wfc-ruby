@@ -1,5 +1,5 @@
-require_relative './util.rb'
-require_relative './wave.rb'
+require(File.expand_path('./util.rb', File.dirname(__FILE__)))
+require(File.expand_path('./wave.rb', File.dirname(__FILE__)))
 
 describe("patterns", lambda {
   describe("2-d pattern in a 2-d grid", lambda {

@@ -1,4 +1,4 @@
-require_relative './grid.rb'
+require(File.expand_path('./grid.rb', File.dirname(__FILE__)))
 
 describe("wrap", lambda {
   conf = Config.new

@@ -1,5 +1,5 @@
-require_relative './constants.rb'
-require_relative './util.rb'
+require(File.expand_path('./constants.rb', File.dirname(__FILE__)))
+require(File.expand_path('./util.rb', File.dirname(__FILE__)))
 
 # wrap will wrap out-of-bounds coordinates within
 # given grid dimensions in the x,y, and z direction

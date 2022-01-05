@@ -1,5 +1,5 @@
-require_relative './types.rb'
-require_relative './grid.rb'
+require(File.expand_path('./types.rb',File.dirname(__FILE__)))
+require(File.expand_path('./grid.rb',File.dirname(__FILE__)))
 
 describe("pattern operations", lambda {
   describe("flipDiagXY", lambda {

@@ -1,4 +1,4 @@
-require_relative './cell.rb'
+require(File.expand_path('./cell.rb', File.dirname(__FILE__)))
 
 # flip a 2-dimensional grid along the X=Y diagonal
 def flipDiagXY(grid)

@@ -1,10 +1,9 @@
-require_relative './constants.rb'
-require_relative './types.rb'
-require_relative './cell.rb'
-require_relative './grid.rb'
-require_relative './wave.rb'
-require_relative './pattern.rb'
-
+require(File.expand_path('./constants.rb', File.dirname(__FILE__)))
+require(File.expand_path('./types.rb', File.dirname(__FILE__)))
+require(File.expand_path('./cell.rb', File.dirname(__FILE__)))
+require(File.expand_path('./grid.rb', File.dirname(__FILE__)))
+require(File.expand_path('./wave.rb', File.dirname(__FILE__)))
+require(File.expand_path('./pattern.rb', File.dirname(__FILE__)))
 
 # get all patterns from a given cell
 def cellPatterns(conf,grid,cellCoords)

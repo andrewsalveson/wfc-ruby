@@ -1,6 +1,6 @@
-require_relative './test.rb'
-require_relative './src/cell.test.rb'
-require_relative './src/pattern.test.rb'
-require_relative './src/grid.test.rb'
-require_relative './src/util.test.rb'
-require_relative './src/wave.test.rb'
+require(File.expand_path('./test.rb', File.dirname(__FILE__)))
+require(File.expand_path('./src/cell.test.rb', File.dirname(__FILE__)))
+require(File.expand_path('./src/pattern.test.rb', File.dirname(__FILE__)))
+require(File.expand_path('./src/grid.test.rb', File.dirname(__FILE__)))
+require(File.expand_path('./src/util.test.rb', File.dirname(__FILE__)))
+require(File.expand_path('./src/wave.test.rb', File.dirname(__FILE__)))
