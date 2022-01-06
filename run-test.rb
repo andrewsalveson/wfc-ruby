@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require(File.expand_path('./test.rb', File.dirname(__FILE__)))
 require(File.expand_path('./src/cell.test.rb', File.dirname(__FILE__)))
 require(File.expand_path('./src/pattern.test.rb', File.dirname(__FILE__)))
