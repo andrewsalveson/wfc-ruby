@@ -1,5 +1,5 @@
 class Config
-  attr_accessor :solve, :printPattern, :printWave, :printSolution
+  attr_accessor :solve
   attr_accessor :wrap, :threshold, :size, :patternSize, :outputSize, :debug
   # limits
   attr_accessor :stopAfter, :propagationLimit
@@ -18,9 +18,6 @@ class Config
     @outputSize = [5,5,1]
     @spacing = [120,120,20]
     @solve = true
-    @printPattern = false
-    @printSolution = true
-    @printWave = false # print wave after stop
     @stopAfter = 1000
     @propagationLimit = 10000
     @debug = false
