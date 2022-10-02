@@ -46,13 +46,14 @@ def printZ(conf,wave,z=0)
 end
 
 class Wavelet
+  PINNED="PINNED"
   UNDECIDED="UNDECIDED"
   DECIDED="DECIDED"
-  attr_accessor
   def initialize(address,patterns)
     @address = address
     @state=UNDECIDED
     @patterns = patterns
+    @pinned = pinned
 
     @weightRanges = []
 
@@ -65,6 +66,13 @@ class Wavelet
     @resolved = nil
     self.clear
     self.recalculate    
+  end
+  def pin
+    @pinned = true
+    @state=PINNED
+  end
+  def pinned
+    @state == PINNED
   end
   def address
     @address
@@ -117,7 +125,11 @@ class Wavelet
     # puts "banning #{pattern}"
     deleted = @allowedPatterns.delete(pattern)
     # puts "deleted: #{deleted} left: #{@allowedPatterns.size}"
-    raise "zero patterns allowed in #{self}" if @allowedPatterns.size == 0
+    if @allowedPatterns.size == 0 then
+      puts "exception banning pattern:"
+      printPattern(pattern)
+      raise "zero patterns allowed in #{self}"
+    end
     # invalidate entropy calculation
     @valid = false
     nil
@@ -155,7 +167,7 @@ class Wavelet
     @resolved
   end
   def to_s
-    "<#{@address}:#{@entropy}>"
+    "<#{@address.join(',')}:#{@state}>"
   end
   def inspect
     "#{self.to_s}"

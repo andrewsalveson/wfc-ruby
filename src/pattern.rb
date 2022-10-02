@@ -1,5 +1,30 @@
 require(File.expand_path('./cell.rb', File.dirname(__FILE__)))
 
+def printPattern(pattern)
+  nx = pattern.size
+  ny = nz = 0
+  pattern.each do |row|
+    ny = row.size if row.size > ny
+    row.each do |col|
+      nz =col.size if col.size > nz
+    end
+  end
+
+  out = Array.new(nx){Array.new(nx * nz){Array.new(ny)}}
+  pattern.each_with_index do |row,x|
+    row.each_with_index do |col,y|
+      col.each_with_index do |lvl,z|
+        outRow = [x,z]
+        idx = ((x / nx) * nx) + z
+        out[x][idx][y] = "#{lvl.is_a?(Array) ? lvl.join('|') : lvl}".rjust(8," ")
+      end
+    end
+  end
+  puts ""
+  puts out.map{|xrow| xrow.map{|row| row.join(" ")}.join("\n")}
+  puts ""
+end
+
 # flip a 2-dimensional grid along the X=Y diagonal
 def flipDiagXY(grid)
   d,ny = gridDims(grid)

@@ -115,6 +115,11 @@ def wfc(conf,wave)
 
   currentLoop = 0
 
+  puts "propagate all pinned cells"
+  wave.values.select{|w| w.pinned }.each{|w| propagate(conf,wave,w)}
+
+  puts "loop over undecided cells"
+
   undecided = wave.entries
   while undecided.size > 0 do
     if currentLoop > conf.stopAfter then
@@ -213,6 +218,7 @@ def propagate(conf,wave,wavelet)
     ncoords = [cx+dx, cy+dy, cz+dz]
     neighbor = wave[ncoords]
     next if neighbor.nil?
+    next if neighbor.pinned
 
     before = neighbor.allowed.size
 
@@ -244,10 +250,10 @@ def propagate(conf,wave,wavelet)
     begin
       patternsMustMatch(neighbor,whitelist,nb)
     rescue RuntimeError => e
-      puts "failure matching neighbor at #{ncoords} from #{wavelet}: #{e.message}"
+      puts "failure matching neighbor #{neighbor} from #{wavelet}: #{e.message}"
       puts "fatal whitelist:"
       whitelist.each do |v|
-        puts "#{v}"
+        puts "#{v.is_a?(Array) ? v.join(',') : v}"
       end
       raise "failure propagating to neighbor"
     end

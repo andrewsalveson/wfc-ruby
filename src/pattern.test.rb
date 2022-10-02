@@ -1,6 +1,24 @@
 require(File.expand_path('./types.rb',File.dirname(__FILE__)))
 require(File.expand_path('./grid.rb',File.dirname(__FILE__)))
 
+describe("print pattern", lambda {
+  it("prints a 2x2x1 3-D pattern", lambda {
+    grid = [
+      [[cell(:a)],[cell(:b)]],
+      [[cell(:c)],[cell(:d)]]
+    ]
+
+    printPattern(grid)   
+  })
+  it("prints a 2x2x2 3-D pattern", lambda {
+    grid = [
+      [[cell(:a),cell(:ab)],[cell(:b),cell(:bb)]],
+      [[cell(:c),cell(:cb)],[cell(:d),cell(:db)]]
+    ]
+
+    printPattern(grid)
+  })
+})
 describe("pattern operations", lambda {
   describe("flipDiagXY", lambda {
     it("throws if matrix is not square", lambda {
