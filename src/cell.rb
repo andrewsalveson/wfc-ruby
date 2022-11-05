@@ -1,6 +1,7 @@
 
 # create a cell with rotation 0
 def cell(val)
+  # [cellContent, rotation, xflip, yflip]
   [val,0,false,false]
 end
 

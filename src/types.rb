@@ -1,5 +1,6 @@
 class Config
   attr_accessor :solve
+  attr_accessor :stopOnFailure
   attr_accessor :wrap, :threshold, :size, :patternSize, :outputSize, :debug
   # limits
   attr_accessor :stopAfter, :propagationLimit
@@ -18,6 +19,7 @@ class Config
     @outputSize = [5,5,1]
     @spacing = [120,120,20]
     @solve = true
+    @stopOnFailure = true
     @stopAfter = 1000
     @propagationLimit = 10000
     @debug = false

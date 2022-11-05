@@ -244,18 +244,26 @@ def propagate(conf,wave,wavelet)
 
     # build a whitelist of values from
     # the wavelet
-    whitelist = wavelet.allowed.map{|pat| pat[px][py][pz]}.uniq
+    whitelist = wavelet.allowed.map{|pat| 
+      return [] if pat.nil? or pat.size == 0
+      pat[px][py][pz]
+    }.uniq
 
     
     begin
       patternsMustMatch(neighbor,whitelist,nb)
     rescue RuntimeError => e
       puts "failure matching neighbor #{neighbor} from #{wavelet}: #{e.message}"
+      puts "pattern select (x,y,z): (#{patternSelect.join(',')})"
       puts "fatal whitelist:"
       whitelist.each do |v|
-        puts "#{v.is_a?(Array) ? v.join(',') : v}"
+        puts "(content, rotation, xflip, yflip) #{v.is_a?(Array) ? v.join(',') : v}"
       end
-      raise "failure propagating to neighbor"
+      if conf.stopOnFailure then
+        raise "failure propagating to neighbor"
+      else
+        next
+      end
     end
 
     # if neighbor.allowed.size == 1 and neighbor.state == Wavelet::UNDECIDED then

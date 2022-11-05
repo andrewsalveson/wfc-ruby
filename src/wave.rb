@@ -142,7 +142,9 @@ class Wavelet
   def select
     self.recalculate if not @valid
     u = rand
-    @weightRanges.find{|prob,pattern| @allowedPatterns.index(pattern) and (prob / @sumOfWeights) > u}.last
+    found = @weightRanges.find{|prob,pattern| @allowedPatterns.index(pattern) and (prob / @sumOfWeights) > u}
+    return [] if found.nil?
+    found.last
   end
   def collapse
     # puts "collapsing #{self}"
